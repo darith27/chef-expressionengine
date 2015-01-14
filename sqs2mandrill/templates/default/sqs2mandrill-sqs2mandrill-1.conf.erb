@@ -1,0 +1,16 @@
+start on starting sqs2mandrill-sqs2mandrill
+stop on stopping sqs2mandrill-sqs2mandrill
+respawn
+
+env PORT=5000 
+env AWS_ACCESS_KEY=<%= node[:aws][:access_key] %> 
+env AWS_SECRET_ACCESS_KEY=<%= node[:aws][:secret_key] %> 
+env MANDRILL_APIKEY=<%= node[:mandrill][:apikey] %> 
+env MANDRILL_QUEUE=<%= node[:mandrill][:queue] %> 
+env SQS2MANDRILL_LOGFILE_PATH=/var/log/sqs2mandrill.log
+
+setuid ubuntu
+
+chdir /home/ubuntu
+
+exec /usr/local/bin/sqs2mandrill

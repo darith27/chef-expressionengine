@@ -1,0 +1,17 @@
+start on starting sqs2cb-sqs2cb
+stop on stopping sqs2cb-sqs2cb
+respawn
+
+env PORT=5000 
+env AWS_ACCESS_KEY=<%= node[:aws][:access_key] %> 
+env AWS_SECRET_ACCESS_KEY=<%= node[:aws][:secret_key] %> 
+env CB_API_ENDPOINT=<%= node[:caseblocks][:api_endpoint] %> 
+env CB_API_TOKEN=<%= node[:caseblocks][:api_token] %> 
+env CB_QUEUE=<%= node[:caseblocks][:queue] %> 
+env SQS2CB_LOGFILE_PATH=/var/log/sqs2cb.log
+
+setuid ubuntu
+
+chdir /home/ubuntu
+
+exec /usr/local/bin/sqs2cb

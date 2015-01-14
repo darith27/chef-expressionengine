@@ -1,0 +1,2 @@
+<%= node[:aws][:access_key]%>:<%= node[:aws][:secret_key]%>
+
