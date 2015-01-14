@@ -25,8 +25,6 @@ node[:deploy].each do |app_name, deploy|
     action :create
   end
 
-
-
   link "#{app_root}/images" do
     to "#{deploy[:deploy_to]}/shared/images"
   end

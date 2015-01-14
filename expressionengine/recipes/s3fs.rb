@@ -9,7 +9,7 @@
 # sudo make install
 
 
-packages = ["build-essential" "git" "libfuse-dev" "libcurl4-openssl-dev" "libxml2-dev" "mime-support" "automake" "libtool" "pkg-config" "libssl-dev"]
+packages = ["build-essential", "git", "libfuse-dev", "libcurl4-openssl-dev", "libxml2-dev", "mime-support", "automake", "libtool", "pkg-config", "libssl-dev"]
 packages.each do |name|
   package name
 end
