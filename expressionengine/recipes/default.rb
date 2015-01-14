@@ -1,7 +1,7 @@
 node[:deploy].each do |app_name, deploy|
   app_root = "#{deploy[:deploy_to]}/current"
 
-  include_recipe 'expressionengine:s3fs'
+  include_recipe 'expressionengine::s3fs'
 
   directory "#{app_root}/images" do
     recursive true
