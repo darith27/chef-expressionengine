@@ -29,7 +29,7 @@ node[:deploy].each do |app_name, deploy|
     to "#{deploy[:deploy_to]}/shared/images"
   end
   link "#{app_root}/assets" do
-    to "#{deploy[:deploy_to]}/shared/assets"
+    to "/mnt/ee-tyreshopper/assets"
   end
 
   file "#{app_root}/system/expressionengine/config/config.php" do
