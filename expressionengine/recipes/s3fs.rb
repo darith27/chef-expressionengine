@@ -44,6 +44,6 @@ bash "setup mount in fstab" do
   user "root"
   cwd "/etc"
   code <<-EOH
-    echo "s3fs#ee-tyreshopper /mnt/ee-tyreshopper fuse allow_other 0 0" >> fstab
+    echo "s3fs#ee-tyreshopper /mnt/ee-tyreshopper fuse allow_other,use_cache=/tmp/cache 0 0" >> fstab
   EOH
 end
