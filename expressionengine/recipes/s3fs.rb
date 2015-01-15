@@ -1,14 +1,4 @@
 
-# apt-get install build-essential git libfuse-dev libcurl4-openssl-dev libxml2-dev mime-support automake libtool
-# apt-get install pkg-config libssl-dev # See (*3)
-# git clone https://github.com/s3fs-fuse/s3fs-fuse
-# cd s3fs-fuse/
-# ./autogen.sh
-# ./configure --prefix=/usr --with-openssl
-# make
-# sudo make install
-
-
 packages = ["build-essential", "git", "libfuse-dev", "libcurl4-openssl-dev", "libxml2-dev", "mime-support", "automake", "libtool", "pkg-config", "libssl-dev"]
 packages.each do |name|
   package name
@@ -50,13 +40,10 @@ mount "/mnt/ee-tyreshopper" do
   not_if "mountpoint -q /mnt/ee-tyreshopper"
 end
 
-# create credentials file /etc/passwd-s3fs
-# chmod 640 /etc/passwd-s3fs
-# setup fstab
-# mount s3 bucket as /mnt/ee-tyreshopper
-
-# /usr/bin/s3fs mybucket /mnt
-
-# symlink shared/assets > /mnt/ee-tyreshopper/assets
-
-# -o allow_other
+bash "setup mount in fstab" do
+  user "root"
+  cwd "/etc"
+  code <<-EOH
+    echo "s3fs#ee-tyreshopper /mnt/ee-tyreshopper fuse allow_other 0 0" >> fstab
+  EOH
+end
