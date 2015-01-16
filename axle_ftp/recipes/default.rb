@@ -2,7 +2,7 @@ package "vsftpd" do
   action :install
 end
 
-remote_file "/etc/vsftpd.conf" do
+cookbook_file "/etc/vsftpd.conf" do
   owner "root"
   group "root"
   mode 0755
