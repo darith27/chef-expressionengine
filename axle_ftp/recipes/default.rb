@@ -73,6 +73,6 @@ end
 
 execute "restart ftp" do
   command %Q{
-    /etc/init.d/vsftpd restart
+    service vsftpd restart
   }
 end
