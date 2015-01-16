@@ -1,0 +1,5 @@
+start on starting dataflex-service
+stop on stopping dataflex-service
+respawn
+
+exec su - deploy -c 'cd <%= "#{node[:dataflex_service][:home]}/current" %>; export PORT=5200; DATAFLEX_ENV=<%= node[:application][:ea_env] %> bundle exec clockwork <%= "#{node[:dataflex_service][:home]}/current" %>/config/clock.rb  >> <%= "#{node[:application][:worker][:logpath]}/clock-1.log" %> 2>&1'
