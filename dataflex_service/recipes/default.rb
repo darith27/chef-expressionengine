@@ -3,6 +3,11 @@ directory node[:dataflex_service][:home] do
   recursive true
 end
 
+directory "#{node[:dataflex_service][:home]}/shared" do
+  recursive true
+  owner node[:user][:name]
+end
+
 directory "#{node[:dataflex_service][:home]}/shared/vendor/bundle" do
   recursive true
   owner node[:user][:name]
