@@ -1,3 +1,5 @@
+chef_gem 'ruby-shadow'
+
 package "vsftpd" do
   action :install
 end
