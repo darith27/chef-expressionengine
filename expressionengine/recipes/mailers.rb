@@ -6,6 +6,7 @@ node[:deploy].each do |app_name, deploy|
 
   bash "setup rvm" do
     code <<-EOH
+    \\curl -sSL https://get.rvm.io | sudo bash -s stable
     rvm install ruby-2.1.1
     rvm use 2.1.1@tyreshopper --create
     rvm cron setup
