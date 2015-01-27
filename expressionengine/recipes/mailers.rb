@@ -1,6 +1,10 @@
 node[:deploy].each do |app_name, deploy|
   app_root = "#{deploy[:deploy_to]}/current"
 
+  ["mysql2", "activesupport", "aws-sdk-v1"].each do |name|
+    gem_package name
+  end
+
   cron "test_ruby_script" do
     action :create
     minute '0'
