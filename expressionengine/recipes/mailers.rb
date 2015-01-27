@@ -1,6 +1,9 @@
 node[:deploy].each do |app_name, deploy|
   app_root = "#{deploy[:deploy_to]}/current"
 
+  # install MTA to generate output from cron
+  package "postfix"
+
   ["mysql2", "activesupport", "aws-sdk-v1"].each do |name|
     gem_package name
   end
