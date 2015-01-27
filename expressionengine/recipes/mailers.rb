@@ -4,6 +4,15 @@ node[:deploy].each do |app_name, deploy|
   # install MTA to generate output from cron
   package "postfix"
 
+  bash "setup rvm" do
+    command "rvm install ruby-2.1.1"
+    command "rvm use 2.1.1@tyreshopper --create"
+  end
+
+  bash "setup rvm for cron" do
+    command "rvm cron setup"
+  end
+
   ["mysql2", "activesupport", "aws-sdk-v1"].each do |name|
     gem_package name
   end
