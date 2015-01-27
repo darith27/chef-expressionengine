@@ -1,0 +1,9 @@
+Host application-repo
+  HostName github.com
+  User git
+  IdentityFile /home/<%= node[:user][:name] %>/.ssh/<%= node[:application][:deploy_key] %>
+
+Host dataflex_service
+  HostName github.com
+  User git
+  IdentityFile /home/<%= node[:user][:name] %>/.ssh/<%= node[:dataflex_service][:deploy_key_name] %>
